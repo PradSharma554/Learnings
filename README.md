@@ -98,7 +98,7 @@ box-sizing property:
 
 ---
 
-Q) Grid and Flexbox
+Q) Grid and Flexbox \n
 Q) No grid, flex, javascript
 Q) inline, block elements
 Q) Accessibility
