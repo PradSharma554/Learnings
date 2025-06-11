@@ -48,6 +48,7 @@ You have 3 options:
 
 ---
 
+
 ### Accessibility
 
 Accessible Rich Internet Applications **(ARIA)** is a set of [roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles) and [attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes) that define ways to make web content and web applications (especially those developed with JavaScript) more accessible to people with disabilities.
