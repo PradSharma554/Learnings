@@ -94,13 +94,3 @@ box-sizing property:
 2. border-box: When border and margin are considered inside width and height only
 
 ---
-
-**Types of inline elements:**
-
----
-
-Q) Grid and Flexbox
-Q) No grid, flex, javascript
-Q) inline, block elements
-Q) Accessibility
-Q) Refactoring UI: Daily 5-10 pages
