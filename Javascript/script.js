@@ -17,9 +17,21 @@
 //   this.textContent = this;
 // });
 
-let visits = 0;
-function trackVisits(){
-  visits++;
-  console.log(this); // 'this' refers to the global object (window in browsers) console.log( You have visited this page ${visits} times.');
+// let visits = 0;
+// function trackVisits(){
+//   visits++;
+//   console.log(this); // 'this' refers to the global object (window in browsers) console.log( You have visited this page ${visits} times.');
+// }
+// trackVisits(); // Calls the function
+
+const girlfriend = {
+	name: "Emily",
+	takeSelfie: function(){
+		console.log("This is " + this.name + "'s selfie");
+    // 'this' refers to the 'girlfriend' object
+  }
 }
-trackVisits(); // Calls the function
+girlfriend.takeSelfie(); // Output: This is Emily's selfie
+
+var abc = 123
+console.log(abc)
