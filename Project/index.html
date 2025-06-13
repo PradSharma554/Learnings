@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zopdev Integration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Connect Zopdev with the Tools You Already Use</h1>
+                    <p>Seamlessly connect Zopdev with the essential tools your DevOps team relies on every day—CI/CD platforms, monitoring solutions, alerting systems, cloud services, and collaboration apps—all in one place.</p>
+                </div>
+                <div class="hero-image">
+                    <img src="photos/logo.png" alt="Integration illustration">
+                </div>
+            </div>
+        </section>
+
+        <section class="integrations">
+            <div class="container">
+                <h2>Featured Integration</h2>
+                <div class="search-container">
+                    <input type="text" id="search-integrations" placeholder="Search Integrations">
+                </div>
+
+                <div c3ass="tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="categories">Categories</button>
+                        <div class="app" data-tab="applications">Applications</div>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="categories">
+                            <div class="categories-sidebar">
+                                <ul>
+                                    <li class="active">Applications</li>
+                                    <li>Datastore</li>
+                                    <li>Observability</li>
+                                </ul>
+                            </div>
+                            <div class="integration-cards" id="integration-cards">
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="applications">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
