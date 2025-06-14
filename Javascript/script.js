@@ -24,14 +24,35 @@
 // }
 // trackVisits(); // Calls the function
 
-const girlfriend = {
-	name: "Emily",
-	takeSelfie: function(){
-		console.log("This is " + this.name + "'s selfie");
-    // 'this' refers to the 'girlfriend' object
-  }
-}
-girlfriend.takeSelfie(); // Output: This is Emily's selfie
+// const girlfriend = {
+// 	name: "Emily",
+// 	takeSelfie: function(){
+// 		console.log("This is " + this.name + "'s selfie");
+//     // 'this' refers to the 'girlfriend' object
+//   }
+// }
+// girlfriend.takeSelfie(); // Output: This is Emily's selfie
 
-var abc = 123
-console.log(abc)
+// var abc = 123
+// console.log(abc)
+
+// function a(...b){
+// 	console.log("The input was:", b);
+// }
+
+// a("a","b","c");
+
+// const d = ["d", "e", "f"];
+// const e = [...d, "g"];
+// console.log(e);
+
+const person = {
+	name: "Alice",
+	greet: function(){
+		setTimeout(()=> {
+			console.log(`Hello, ${this.name}`); // 'this' refe
+		}, 1000);
+	}
+};
+
+person.greet(); // Output: Hello, Alice
