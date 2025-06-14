@@ -125,26 +125,42 @@
 // console.log("End");
 
 
-async function doStuff() {
-  console.log("Before fetch");
-  // Start async fetch — this pauses doStuff here
-  await fetch("https://example.com");
-  // This runs later, after fetch resolves
-  console.log("After fetch");
+// async function doStuff() {
+//   console.log("Before fetch");
+//   // Start async fetch — this pauses doStuff here
+//   await fetch("https://example.com");
+//   // This runs later, after fetch resolves
+//   console.log("After fetch");
+// }
+
+// doStuff();
+
+// // Meanwhile, JS can do other things, like this:
+// setTimeout(() => {
+//   console.log("Timeout ran while waiting for fetch");
+// }, 0);
+// setTimeout(() => {
+//   console.log("Timeout 2 ran while waiting for fetch");
+// }, 100);
+// setTimeout(() => {
+//   console.log("Timeout 3 ran while waiting for fetch");
+// }, 6000);
+// setTimeout(() => {
+//   console.log("Timeout 4 ran while waiting for fetch");
+// }, 200);
+
+
+
+function fetchCrushMessage (callback){
+	let i = 0;
+	const id = setInterval(() => {
+		callback("Crush replied: Hi!");
+		i++
+		if(i==1)	clearInterval(id);
+	}, 2000);
 }
 
-doStuff();
-
-// Meanwhile, JS can do other things, like this:
-setTimeout(() => {
-  console.log("Timeout ran while waiting for fetch");
-}, 0);
-setTimeout(() => {
-  console.log("Timeout 2 ran while waiting for fetch");
-}, 100);
-setTimeout(() => {
-  console.log("Timeout 3 ran while waiting for fetch");
-}, 6000);
-setTimeout(() => {
-  console.log("Timeout 4 ran while waiting for fetch");
-}, 7000);
+console.log ("Waiting for crush's reply..."); 
+fetchCrushMessage ((message) => {
+	console. log (message);
+});
