@@ -46,13 +46,30 @@
 // const e = [...d, "g"];
 // console.log(e);
 
-const person = {
-	name: "Alice",
-	greet: function(){
-		setTimeout(()=> {
-			console.log(`Hello, ${this.name}`); // 'this' refe
-		}, 1000);
-	}
+// const person = {
+// 	name: "Alice",
+// 	greet: function(){
+// 		name :"John"
+// 		setTimeout(()=> {
+// 			console.log(`Hello, ${this.name}`); // 'this' refe
+// 		}, 1000);
+// 	}
+// };
+
+// person.greet(); // Output: Hello, Alice
+
+
+const crush = {
+	likes: ["Movies", "Music"],
+	sayHi: function () {
+		return "Hi, let's hang out!";
+	},
 };
 
-person.greet(); // Output: Hello, Alice
+// Create a friend object inheriting from crush
+const friend = Object. create (crush);
+friend.sharedSecrets = ["Vacation plans"];
+
+console. log(friend.likes); // ["Movies", "Music"] (Inherited) 
+console. log(friend.sayHi()); // "Hi, let's hang out!" (Inherited) 
+console.log(friend.sharedSecrets); // ["Vacation plans"]
