@@ -74,18 +74,52 @@
 // console.log(friend.sharedSecrets); // ["Vacation plans"]
 
 
-function Person (name, role){
-	this.name = name;
-	this.role = role;
-}
+// function Person (name, role){
+// 	this.name = name;
+// 	this.role = role;
+// }
 
-// Add methods to the prototype
-Person. prototype.greet = function (){
-	return `Hi, I'm ${this.name}, and I am a ${this.role}.`;
-};
+// // Add methods to the prototype
+// Person. prototype.greet = function (){
+// 	return `Hi, I'm ${this.name}, and I am a ${this.role}.`;
+// };
 
-const john = new Person ("John", "Husband");
-const emily = new Person ("Emily", "Wife");
+// const john = new Person ("John", "Husband");
+// const emily = new Person ("Emily", "Wife");
 
-console.log(john.greet()); // "Hi, I'm John, and I am a Husband." 
-console.log(emily.greet()); // "Hi, I'm Emily, and I am a Wife."
+// console.log(john.greet()); // "Hi, I'm John, and I am a Husband." 
+// console.log(emily.greet()); // "Hi, I'm Emily, and I am a Wife."
+
+
+
+// class Family {
+// 	constructor (lastName){
+// 		this. lastName = lastName;
+// 	}
+// 	familyTradition(){
+// 		return "Sunday dinners";
+// 	}
+// }
+// class Couple extends Family {
+// 	constructor(lastName, partnerName){
+// 		super (lastName) ;
+// 		this. partnerName = partnerName;
+// 	}
+	
+// 	familyTradition () {
+// 		return '${this-partnerName} loves hosting Sunday dinners.';
+// 	}
+// }
+
+// const couple = new Couple("Smith", "Emily");
+// console. log (couple.lastName); // "Smith" console.log(couple.familyTradition()); // "Emily loves hosting Sunday
+
+
+
+// console.log("Start");
+
+// setTimeout(() => {
+//   console.log("Async task");
+// }, 0);
+
+// console.log("End");
