@@ -59,17 +59,33 @@
 // person.greet(); // Output: Hello, Alice
 
 
-const crush = {
-	likes: ["Movies", "Music"],
-	sayHi: function () {
-		return "Hi, let's hang out!";
-	},
+// const crush = {
+// 	likes: ["Movies", "Music"],
+// 	sayHi: function () {
+// 		return "Hi, let's hang out!";
+// 	},
+// };
+// // Create a friend object inheriting from crush
+// const friend = Object. create (crush);
+// friend.sharedSecrets = ["Vacation plans"];
+
+// console. log(friend.likes); // ["Movies", "Music"] (Inherited) 
+// console. log(friend.sayHi()); // "Hi, let's hang out!" (Inherited) 
+// console.log(friend.sharedSecrets); // ["Vacation plans"]
+
+
+function Person (name, role){
+	this.name = name;
+	this.role = role;
+}
+
+// Add methods to the prototype
+Person. prototype.greet = function (){
+	return `Hi, I'm ${this.name}, and I am a ${this.role}.`;
 };
 
-// Create a friend object inheriting from crush
-const friend = Object. create (crush);
-friend.sharedSecrets = ["Vacation plans"];
+const john = new Person ("John", "Husband");
+const emily = new Person ("Emily", "Wife");
 
-console. log(friend.likes); // ["Movies", "Music"] (Inherited) 
-console. log(friend.sayHi()); // "Hi, let's hang out!" (Inherited) 
-console.log(friend.sharedSecrets); // ["Vacation plans"]
+console.log(john.greet()); // "Hi, I'm John, and I am a Husband." 
+console.log(emily.greet()); // "Hi, I'm Emily, and I am a Wife."
