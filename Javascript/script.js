@@ -151,16 +151,47 @@
 
 
 
-function fetchCrushMessage (callback){
-	let i = 0;
-	const id = setInterval(() => {
-		callback("Crush replied: Hi!");
-		i++
-		if(i==1)	clearInterval(id);
-	}, 2000);
-}
+// function fetchCrushMessage (callback){
+// 	let i = 0;
+// 	const id = setInterval(() => {
+// 		callback("Crush replied: Hi!");
+// 		i++
+// 		if(i==1)	clearInterval(id);
+// 	}, 2000);
+// }
 
-console.log ("Waiting for crush's reply..."); 
-fetchCrushMessage ((message) => {
-	console. log (message);
-});
+// console.log ("Waiting for crush's reply..."); 
+// fetchCrushMessage ((message) => {
+// 	console. log (message);
+// });
+
+
+// function surpriseCrush() {
+// 	try {
+// 		let floristOpen = false; // Florist is closed
+		
+// 		if (!floristOpen) {
+// 			throw new Error("Florist is closed!"); // Trigger an error
+// 		}
+// 		console. log ("Bought flowers for crush!");
+// 	} 
+// 	catch (error) {
+// 	console.log("'Plan B: Wrote a heartfelt note instead.");
+// 	}
+// }
+// surpriseCrush ();
+
+
+
+function rememberAnniversary (partner){
+	if (partner){
+		throw new Error("Anniversary reminder failed: No partner found!");
+	}
+	console. log ('Remembered the anniversary with ${partner}!');
+}
+try {
+rememberAnniversary(null); // No partner provided
+}
+catch (error){
+	console. log("Oops:", error-message);
+}
