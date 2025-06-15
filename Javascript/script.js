@@ -198,9 +198,9 @@
 
 
 
-const crush = {
-	name: "Sophia" ,
-	likesYou: true,
-	plans: { dinner: "7 PM" },
-};
-console.log (crush.likesYou && crush.likesYou?.plans?.dinner);
+// const crush = {
+// 	name: "Sophia" ,
+// 	likesYou: true,
+// 	plans: { dinner: "7 PM" },
+// };
+// console.log (crush.likesYou && crush.likesYou?.plans?.dinner);
