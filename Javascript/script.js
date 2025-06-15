@@ -183,15 +183,24 @@
 
 
 
-function rememberAnniversary (partner){
-	if (partner){
-		throw new Error("Anniversary reminder failed: No partner found!");
-	}
-	console. log ('Remembered the anniversary with ${partner}!');
-}
-try {
-rememberAnniversary(null); // No partner provided
-}
-catch (error){
-	console. log("Oops:", error-message);
-}
+// function rememberAnniversary (partner){
+// 	if (partner){
+// 		throw new Error("Anniversary reminder failed: No partner found!");
+// 	}
+// 	console. log ('Remembered the anniversary with ${partner}!');
+// }
+// try {
+// rememberAnniversary(null); // No partner provided
+// }
+// catch (error){
+// 	console. log("Oops:", error-message);
+// }
+
+
+
+const crush = {
+	name: "Sophia" ,
+	likesYou: true,
+	plans: { dinner: "7 PM" },
+};
+console.log (crush.likesYou && crush.likesYou?.plans?.dinner);
