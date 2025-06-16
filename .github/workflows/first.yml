@@ -1,4 +1,3 @@
-
 name: Js CI/CD Pipeline
 
 on:
@@ -6,6 +5,8 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+  release:
+    types: [created]
 
 jobs:
   build_and_dockerize:
