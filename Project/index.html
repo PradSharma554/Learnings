@@ -7,46 +7,8 @@
     <meta name="description" content="Seamlessly connect Zopdev with essential DevOps tools - CI/CD platforms, monitoring solutions, cloud services, and collaboration apps.">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <header role="banner">
-        <div class="container">
-            <div class="logo">
-                <a aria-label="Zopdev Home">
-                    <!-- <img src="photos/logo.png" alt="Zopdev Logo" width="120" height="32"> -->
-                    <span style="color: #0991B1;">zop<span style="color: #000000">.dev</span></span>                    
-                </a>
-            </div>
-            
-            <nav role="navigation" aria-label="Main navigation" id="main-nav">
-                <ul>
-                    <li><a>Features</a></li>
-                    <li><a>Pricing</a></li>
-                    <li><a>Blog</a></li>
-                    <li><a>Docs</a></li>
-                    <li><a>Contact Us</a></li>
-                    <li><a aria-current="page">Playground</a></li>
-                </ul>
-            </nav>
-            
-            <div class="auth-buttons">
-                <a class="playground-btn" aria-label="Try Zopdev Playground">
-                    <img src="https://framerusercontent.com/images/vI8Grn9QcgzqxjcN2TGpox0Hw.png" alt="" aria-hidden="true" width="20" height="20">
-                    Playground
-                </a>
-                <a class="login-btn">Log in</a>
-                <a class="signup-btn">Sign up</a>
-            </div>
-            
-            <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-            </button>
-        </div>
-    </header>
 
+<body>
     <main id="main-content" role="main">
         <section class="hero" aria-labelledby="hero-title">
             <div class="container">
@@ -55,7 +17,7 @@
                     <p>Seamlessly connect Zopdev with the essential tools your DevOps team relies on every day—CI/CD platforms, monitoring solutions, alerting systems, cloud services, and collaboration apps—all in one place.</p>
                 </div>
                 <div class="hero-image">
-                    <img src="photos/logo.png" alt="Integration illustration showing connected tools" width="200" height="150">
+                    <img src="./photos/logo.png" alt="Integration illustration showing connected tools" width="200" height="150">
                 </div>
             </div>
         </section>
@@ -99,12 +61,7 @@
                         >
                             <aside class="categories-sidebar" role="complementary" aria-label="Filter by category">
                                 <h3 class="sr-only">Categories</h3>
-                                <ul role="list">
-                                    <li>
-                                        <button class="category-btn active" data-category="all" aria-pressed="true">
-                                            All Categories
-                                        </button>
-                                    </li>
+                                <ul role="list" id="category-buttons">
                                     <li>
                                         <button class="category-btn" data-category="Applications" aria-pressed="false">
                                             Applications
@@ -147,7 +104,39 @@
                 </div>
             </div>
         </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" aria-labelledby="faq-title">
+            <div class="container">
+                <h2 id="faq-title">Frequently Asked Questions</h2>
+                <div class="faq-container" id="faq-container">
+                    <!-- FAQ items will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
     </main>
+
+    <div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-labelledby="search-overlay-title">
+        <div class="search-overlay-content">
+            <div class="search-overlay-header">
+                <h2 id="search-overlay-title" class="sr-only">Search Integrations</h2>
+                <input 
+                    type="text" 
+                    id="search-overlay-input" 
+                    placeholder="Search integrations..."
+                    aria-label="Search integrations"
+                    autocomplete="off"
+                >
+                <button class="search-overlay-close" aria-label="Close search">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="search-suggestions" id="search-suggestions" role="listbox" aria-label="Search suggestions">
+            </div>
+        </div>
+    </div>
+
+    <div id="sr-announcements" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 
     <script src="script.js"></script>
 </body>
