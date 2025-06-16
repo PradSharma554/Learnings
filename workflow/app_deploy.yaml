@@ -1,0 +1,37 @@
+name: Js CI/CD Pipeline
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build_and_dockerize:
+    name: Build and Dockerize
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Js
+        uses: actions/setup-js@v4
+        with:
+          js-version: '1.21'
+
+      - name: Download dependencies
+        run: js mod download
+
+      # - name: Build js Binary
+
+      - name: Log in to Dockerhub
+        uses: docker/login-action@v3
+        with:
+          username: ${{secrets.DOCKER_USERNAME}}
+          password: ${{secrets.DOCKER_PASSWORD}}
+
+      - name: Build Docker image
+        run: docker build -t ${{secrets.DOCKER_USERNAME}}/js-demo:latest
+
+      - name: Push Docker image
+        run: docker push ${{secrets.DOCKER_USERNAME}}/js-demo:latest
