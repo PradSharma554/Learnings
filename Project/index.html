@@ -1,53 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zopdev Integration</title>
+    <title>Zopdev Integration - Connect Your DevOps Tools</title>
+    <meta name="description" content="Seamlessly connect Zopdev with essential DevOps tools - CI/CD platforms, monitoring solutions, cloud services, and collaboration apps.">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <main>
-        <section class="hero">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header role="banner">
+        <div class="container">
+            <div class="logo">
+                <a aria-label="Zopdev Home">
+                    <!-- <img src="photos/logo.png" alt="Zopdev Logo" width="120" height="32"> -->
+                    <span style="color: #0991B1;">zop<span style="color: #000000">.dev</span></span>                    
+                </a>
+            </div>
+            
+            <nav role="navigation" aria-label="Main navigation" id="main-nav">
+                <ul>
+                    <li><a>Features</a></li>
+                    <li><a>Pricing</a></li>
+                    <li><a>Blog</a></li>
+                    <li><a>Docs</a></li>
+                    <li><a>Contact Us</a></li>
+                    <li><a aria-current="page">Playground</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a class="playground-btn" aria-label="Try Zopdev Playground">
+                    <img src="https://framerusercontent.com/images/vI8Grn9QcgzqxjcN2TGpox0Hw.png" alt="" aria-hidden="true" width="20" height="20">
+                    Playground
+                </a>
+                <a class="login-btn">Log in</a>
+                <a class="signup-btn">Sign up</a>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="hero" aria-labelledby="hero-title">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Connect Zopdev with the Tools You Already Use</h1>
+                    <h1 id="hero-title">Connect Zopdev with the Tools You Already Use</h1>
                     <p>Seamlessly connect Zopdev with the essential tools your DevOps team relies on every day—CI/CD platforms, monitoring solutions, alerting systems, cloud services, and collaboration apps—all in one place.</p>
                 </div>
                 <div class="hero-image">
-                    <img src="photos/logo.png" alt="Integration illustration">
+                    <img src="photos/logo.png" alt="Integration illustration showing connected tools" width="200" height="150">
                 </div>
             </div>
         </section>
 
-        <section class="integrations">
+        <section class="integrations" aria-labelledby="integrations-title">
             <div class="container">
-                <h2>Featured Integration</h2>
+                <h2 id="integrations-title">Featured Integrations</h2>
+                
                 <div class="search-container">
-                    <input type="text" id="search-integrations" placeholder="Search Integrations">
+                    <label for="search-integrations" class="sr-only">Search integrations</label>
+                    <input 
+                        type="text" 
+                        id="search-integrations" 
+                        placeholder="Search integrations... (Press '/' to focus)" 
+                        aria-describedby="search-help"
+                        autocomplete="off"
+                    >
+                    <div id="search-help" class="sr-only">Press forward slash to focus search</div>
                 </div>
 
-                <div c3ass="tabs">
+                <div class="tabs" role="tablist" aria-label="Integration categories">
                     <div class="tab-buttons">
-                        <button class="tab-btn active" data-tab="categories">Categories</button>
-                        <div class="app" data-tab="applications">Applications</div>
+                        <button 
+                            class="tab-btn active" 
+                            data-tab="categories" 
+                            role="tab" 
+                            aria-selected="true" 
+                            aria-controls="categories"
+                            id="tab-categories"
+                        >
+                            Categories
+                        </button>
                     </div>
 
                     <div class="tab-content">
-                        <div class="tab-pane active" id="categories">
-                            <div class="categories-sidebar">
-                                <ul>
-                                    <li class="active">Applications</li>
-                                    <li>Datastore</li>
-                                    <li>Observability</li>
+                        <div 
+                            class="tab-pane active" 
+                            id="categories" 
+                            role="tabpanel" 
+                            aria-labelledby="tab-categories"
+                        >
+                            <aside class="categories-sidebar" role="complementary" aria-label="Filter by category">
+                                <h3 class="sr-only">Categories</h3>
+                                <ul role="list">
+                                    <li>
+                                        <button class="category-btn active" data-category="all" aria-pressed="true">
+                                            All Categories
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="category-btn" data-category="Applications" aria-pressed="false">
+                                            Applications
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="category-btn" data-category="Datastore" aria-pressed="false">
+                                            Datastore
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="category-btn" data-category="Observability" aria-pressed="false">
+                                            Observability
+                                        </button>
+                                    </li>
                                 </ul>
+                            </aside>
+                            
+                            <div class="integration-sections">
+                                <section id="applications-section" class="category-section">
+                                    <h3 class="category-title">Applications</h3>
+                                    <div class="integration-cards" id="applications-cards" role="region" aria-live="polite" aria-label="Applications integration cards">
+                                    </div>
+                                </section>
+                                
+                                <section id="datastore-section" class="category-section">
+                                    <h3 class="category-title">Datastore</h3>
+                                    <div class="integration-cards" id="datastore-cards" role="region" aria-live="polite" aria-label="Datastore integration cards">
+                                    </div>
+                                </section>
+                                
+                                <section id="observability-section" class="category-section">
+                                    <h3 class="category-title">Observability</h3>
+                                    <div class="integration-cards" id="observability-cards" role="region" aria-live="polite" aria-label="Observability integration cards">
+                                    </div>
+                                </section>
                             </div>
-                            <div class="integration-cards" id="integration-cards">
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="applications">
                         </div>
                     </div>
                 </div>
