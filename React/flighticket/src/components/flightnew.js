@@ -17,6 +17,7 @@ const PlaneSeatingSystem = () => {
         })
       })
     }
+
     for (let row = 4; row <= 20; row++) {
       ;["A", "B", "C", "D", "E", "F"].forEach((letter) => {
         seats.push({
