@@ -29,13 +29,6 @@ const integrationsData = {
         description: "Beautiful, realtime collaborative, feature packed, and markdown compatible.",
         category: "Applications",
       },
-      {
-        id: "slack",
-        name: "Slack",
-        icon: "https://framerusercontent.com/images/XWqLTLXleHamR90CxjA5PSwvIcM.svg",
-        description: "A simple Slack bot programmed in Python.",
-        category: "Applications",
-      },
     ],
     Datastore: [
       {
@@ -144,65 +137,6 @@ const integrationsData = {
         category: "Datastore",
       },
     ],
-    Observability: [
-      {
-        id: "loki",
-        name: "Loki",
-        icon: "https://framerusercontent.com/images/6yDZTaSiaEvYgE9LqD2z3GT8h4.svg",
-        description: "Loki is a horizontally scalable, log aggregation system",
-        category: "Observability",
-      },
-      {
-        id: "mimir",
-        name: "Mimir",
-        icon: "https://framerusercontent.com/images/K4YF2J6Wb5TkQayiIUqm9gsRLOg.svg",
-        description: "A scalable, multi-tenant time-series database for Prometheus metrics.",
-        category: "Observability",
-      },
-      {
-        id: "tempo",
-        name: "Tempo",
-        icon: "https://framerusercontent.com/images/OCA4myxlzNqNgrMyxymX9LrMkJ8.svg",
-        description: "Grafana's high-scale distributed tracing backend.",
-        category: "Observability",
-      },
-      {
-        id: "grafana",
-        name: "Grafana",
-        icon: "https://framerusercontent.com/images/R3iRNGrhsULm9v6Lu62r2Mfks.svg",
-        description: "Open-source analytics and visualization platform for time-series data.",
-        category: "Observability",
-      },
-      {
-        id: "prometheus",
-        name: "Prometheus",
-        icon: "https://framerusercontent.com/images/OoYwOtYMUMSsFXqqJrSPccxKLBA.svg",
-        description: "Open-source monitoring and alerting system for time-series data.",
-        category: "Observability",
-      },
-      {
-        id: "splunk",
-        name: "Splunk",
-        icon: "https://framerusercontent.com/images/xFocUuhbKqUa0hJ5vZGvqngmUg.svg",
-        description: "Open-source monitoring and alerting system for time-series data.",
-        category: "Observability",
-      },
-      {
-        id: "datadog",
-        name: "Datadog",
-        icon: "https://framerusercontent.com/images/iKF1768aJWTjWA6gA0HNYeaem7E.svg",
-        description: "Monitoring and analytics platform for large-scale applications and infrastructure.",
-        category: "Observability",
-      },
-      {
-        id: "newrelic",
-        name: "New Relic",
-        icon: "https://framerusercontent.com/images/Vjahw0hMgW6HPNpoI5KfCUWZEHQ.svg",
-        description:
-          "monitoring and analyzing the performance of digital systems, encompassing applications and infrastructure.",
-        category: "Observability",
-      },
-    ],
   },
 }
 
@@ -245,13 +179,11 @@ const faqData = [
   },
 ]
 
-// Global variables
 const currentSearchTerm = ""
 let searchOverlay
 let searchOverlayInput
 let searchSuggestions
 
-// Initialize the application
 document.addEventListener("DOMContentLoaded", () => {
   initializeElements()
   setupEventListeners()
@@ -277,7 +209,6 @@ function setupEventListeners() {
 function renderAllIntegrations() {
   renderCategoryIntegrations("Applications")
   renderCategoryIntegrations("Datastore")
-  renderCategoryIntegrations("Observability")
 }
 
 function renderCategoryIntegrations(category) {
@@ -406,7 +337,6 @@ function setupSearch() {
   const searchInput = document.getElementById("search-integrations")
   if (!searchInput) return
 
-  // Make search input clickable to open overlay
   searchInput.addEventListener("click", openSearchOverlay)
   searchInput.addEventListener("focus", openSearchOverlay)
 }
@@ -423,7 +353,6 @@ function handleCategoryClick(button) {
   const categoryButtons = document.querySelectorAll(".category-btn")
   const category = button.getAttribute("data-category")
 
-  // Update button states
   categoryButtons.forEach((btn) => {
     btn.setAttribute("aria-pressed", "false")
     btn.classList.remove("active")
@@ -432,7 +361,6 @@ function handleCategoryClick(button) {
   button.setAttribute("aria-pressed", "true")
   button.classList.add("active")
 
-  // Scroll to the category section
   const targetSection = document.getElementById(`${category.toLowerCase()}-section`)
   if (targetSection) {
     targetSection.scrollIntoView({
@@ -522,25 +450,21 @@ function handleOverlaySearchKeydown(e) {
 function showSearchSuggestions(searchTerm) {
   if (!searchSuggestions) return
 
-  // Get all integrations from all categories
+  if (!searchTerm || searchTerm.trim() === "") {
+    searchSuggestions.innerHTML = ""
+    return
+  }
+
   const allIntegrations = [
     ...integrationsData.categories.Applications,
     ...integrationsData.categories.Datastore,
-    ...integrationsData.categories.Observability,
   ]
 
-  let filteredIntegrations = allIntegrations
-
-  if (searchTerm) {
-    filteredIntegrations = allIntegrations.filter(
-      (integration) =>
-        integration.name.toLowerCase().includes(searchTerm) ||
-        integration.description.toLowerCase().includes(searchTerm),
-    )
-  }
-
-  // Limit to 8 suggestions
-  filteredIntegrations = filteredIntegrations.slice(0, 8)
+  const filteredIntegrations = allIntegrations.filter(
+    (integration) =>
+      integration.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      integration.description.toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
   if (filteredIntegrations.length === 0) {
     searchSuggestions.innerHTML = `
@@ -555,7 +479,6 @@ function showSearchSuggestions(searchTerm) {
     .map((integration, index) => createSearchSuggestion(integration, index))
     .join("")
 
-  // Add event listeners to suggestions
   const suggestionElements = document.querySelectorAll(".search-suggestion")
   suggestionElements.forEach((element, index) => {
     element.addEventListener("click", () => {
@@ -588,7 +511,6 @@ function createSearchSuggestion(integration, index) {
 function handleSuggestionClick(integration) {
   closeSearchOverlay()
 
-  // Scroll to the integration's category section
   const targetSection = document.getElementById(`${integration.category.toLowerCase()}-section`)
   if (targetSection) {
     targetSection.scrollIntoView({
@@ -596,7 +518,6 @@ function handleSuggestionClick(integration) {
       block: "start",
     })
 
-    // Highlight the specific card
     setTimeout(() => {
       const card = document.querySelector(`[data-integration-id="${integration.id}"]`)
       if (card) {
