@@ -1,22 +1,23 @@
 import React, { useRef, useEffect, useState } from 'react';
 
-export default function UseRefExample() {
-  const inputRef = useRef(null);       // for focusing input
-  const renderCount = useRef(1);       // for tracking renders
-
+export default function UseRefVsStateExample() {
+  const inputRef = useRef(null);
+  const renderCountRef = useRef(1);
+  const [renderCountState, setRenderCountState] = useState(1);
   const [text, setText] = useState('');
 
   useEffect(() => {
-    renderCount.current += 1;
+    renderCountRef.current += 1;
   });
 
-  const focusInput = () => {
-    inputRef.current.focus();          // focus the input field
+  const handleClick = () => {
+    setRenderCountState(renderCountState + 1);
   };
 
   return (
     <div>
-      <h2>Render Count: {renderCount.current}</h2>
+      <h2>useRef Count: {renderCountRef.current}</h2>
+      <h2>useState Count: {renderCountState}</h2>
 
       <input
         ref={inputRef}
@@ -25,7 +26,8 @@ export default function UseRefExample() {
         onChange={(e) => setText(e.target.value)}
       />
 
-      <button onClick={focusInput}>Focus Input</button>
+      <button onClick={() => inputRef.current.focus()}>Focus Input</button>
+      <button onClick={handleClick}>Increase State Count</button>      {/* Triggers re-render, hence render count also increases */}
     </div>
   );
 }
