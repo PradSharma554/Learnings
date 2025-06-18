@@ -1,5 +1,5 @@
 import { useState } from "react"
-import './flight.css'
+import "./flight.css"
 
 const PlaneSeatingSystem = () => {
   const initializeSeats = () => {
@@ -14,6 +14,7 @@ const PlaneSeatingSystem = () => {
           status: "available",
           passenger: null,
           gender: null,
+          isWindow: letter === "A" || letter === "D", // Window seats in business class
         })
       })
     }
@@ -28,6 +29,7 @@ const PlaneSeatingSystem = () => {
           status: "available",
           passenger: null,
           gender: null,
+          isWindow: letter === "A" || letter === "F", // Window seats in economy class
         })
       })
     }
@@ -54,9 +56,14 @@ const PlaneSeatingSystem = () => {
     setSeats((prev) =>
       prev.map((seat) =>
         seat.id === selectedSeat.id
-          ? { ...seat, status: "reserved", passenger: bookingForm.name, gender: bookingForm.gender }
-          : seat
-      )
+          ? {
+              ...seat,
+              status: "reserved",
+              passenger: bookingForm.name,
+              gender: bookingForm.gender,
+            }
+          : seat,
+      ),
     )
     setBookingForm({ name: "", gender: "male", class: "economy" })
     setSelectedSeat(null)
@@ -65,9 +72,7 @@ const PlaneSeatingSystem = () => {
 
   const cancelReservation = (seatId) => {
     setSeats((prev) =>
-      prev.map((seat) =>
-        seat.id === seatId ? { ...seat, status: "available", passenger: null, gender: null } : seat
-      )
+      prev.map((seat) => (seat.id === seatId ? { ...seat, status: "available", passenger: null, gender: null } : seat)),
     )
   }
 
@@ -104,6 +109,7 @@ const PlaneSeatingSystem = () => {
                 className={`seat ${getSeatColor(seat)}`}
                 onClick={() => handleSeatClick(seat)}
                 disabled={seat.status === "reserved"}
+                title={seat.isWindow ? `${seat.id} - Window Seat` : seat.id}
               >
                 {seat.letter}
               </button>
@@ -115,6 +121,7 @@ const PlaneSeatingSystem = () => {
                 className={`seat ${getSeatColor(seat)}`}
                 onClick={() => handleSeatClick(seat)}
                 disabled={seat.status === "reserved"}
+                title={seat.isWindow ? `${seat.id} - Window Seat` : seat.id}
               >
                 {seat.letter}
               </button>
@@ -134,10 +141,12 @@ const PlaneSeatingSystem = () => {
                 className={`seat ${getSeatColor(seat)}`}
                 onClick={() => handleSeatClick(seat)}
                 disabled={seat.status === "reserved"}
+                title={seat.isWindow ? `${seat.id} - Window Seat` : seat.id}
               >
                 {seat.letter}
               </button>
             ))}
+
             <span className="aisle" />
             {seats.slice(3).map((seat) => (
               <button
@@ -145,6 +154,7 @@ const PlaneSeatingSystem = () => {
                 className={`seat ${getSeatColor(seat)}`}
                 onClick={() => handleSeatClick(seat)}
                 disabled={seat.status === "reserved"}
+                title={seat.isWindow ? `${seat.id} - Window Seat` : seat.id}
               >
                 {seat.letter}
               </button>
@@ -159,7 +169,7 @@ const PlaneSeatingSystem = () => {
           .filter((s) => s.status === "reserved")
           .map((s) => (
             <div className="reserved-item" key={s.id}>
-              {s.id} - {s.passenger} ({s.gender}) - {s.class}
+              {s.id} - {s.passenger} ({s.gender}) - {s.class} {s.isWindow ? "(Window)" : ""}
               <button onClick={() => cancelReservation(s.id)}>Cancel</button>
             </div>
           ))}
@@ -168,7 +178,9 @@ const PlaneSeatingSystem = () => {
       {showBookingModal && (
         <div className="modal">
           <div className="modal-content">
-            <h3>Book Seat {selectedSeat.id}</h3>
+            <h3>
+              Book Seat {selectedSeat.id} {selectedSeat.isWindow ? "(Window Seat)" : ""}
+            </h3>
             <input
               type="text"
               placeholder="Passenger name"
