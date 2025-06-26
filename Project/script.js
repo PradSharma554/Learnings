@@ -140,45 +140,6 @@ const integrationsData = {
   },
 }
 
-const faqData = [
-  {
-    id: "what-is-zopdev",
-    question: "What is Zopdev Integration?",
-    answer:
-      "Zopdev Integration is a comprehensive platform that allows you to seamlessly connect and manage all your DevOps tools in one place. It supports CI/CD platforms, monitoring solutions, databases, and collaboration tools to streamline your development workflow.",
-  },
-  {
-    id: "how-to-setup",
-    question: "How do I set up an integration?",
-    answer:
-      "Setting up an integration is simple. Click on any integration card, follow the step-by-step configuration guide, provide your API credentials or connection details, and test the connection. Most integrations can be set up in under 5 minutes.",
-  },
-  {
-    id: "supported-tools",
-    question: "Which tools are supported?",
-    answer:
-      "We support over 50+ popular DevOps tools including databases like MySQL, PostgreSQL, Redis, monitoring tools like Grafana, Prometheus, DataDog, and applications like WordPress, Jupyter, and many more. New integrations are added regularly.",
-  },
-  {
-    id: "security",
-    question: "Is my data secure?",
-    answer:
-      "Yes, security is our top priority. All connections use encrypted protocols (TLS/SSL), credentials are stored securely using industry-standard encryption, and we follow SOC 2 compliance standards. We never store your actual data, only connection metadata.",
-  },
-  {
-    id: "pricing",
-    question: "What does it cost?",
-    answer:
-      "Zopdev Integration offers flexible pricing plans. We have a free tier for up to 5 integrations, and paid plans starting at $29/month for unlimited integrations with advanced features like monitoring, alerting, and team collaboration.",
-  },
-  {
-    id: "support",
-    question: "Do you provide support?",
-    answer:
-      "Yes, we provide comprehensive support including detailed documentation, video tutorials, email support, and for enterprise customers, dedicated support channels with guaranteed response times.",
-  },
-]
-
 const currentSearchTerm = ""
 let searchOverlay
 let searchOverlayInput
